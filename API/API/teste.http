@@ -1,0 +1,8 @@
+### Testar a primeira funcionalidade
+GET  http://localhost:5014
+
+### Testar a segunda funcionalidade
+GET  http://localhost:5014/segundafuncionalidade
+
+### Retornar endereço
+GET  http://localhost:5014/retornarendereco
