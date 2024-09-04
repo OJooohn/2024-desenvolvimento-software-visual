@@ -1,8 +1,8 @@
-### Testar a primeira funcionalidade
+### Testar a raiz da aplicação
 GET  http://localhost:5014
 
-### Testar a segunda funcionalidade
-GET  http://localhost:5014/segundafuncionalidade
+### Listar produtos
+GET  http://localhost:5014/produto/listar
 
-### Retornar endereço
-GET  http://localhost:5014/retornarendereco
+### Cadastrar produto
+POST  http://localhost:5014/produto/cadastrar/mouse

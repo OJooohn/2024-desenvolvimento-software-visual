@@ -3,23 +3,56 @@
 // - Postman
 // - Insomnia
 // MINIMAL APIs
+
+// import de Java
+using API.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
+List<Produto> produtos = new List<Produto>();
+produtos.Add(new Produto(){
+    Nome = "Notebook",
+    Preco = 5000,
+    Quantidade = 54
+});
+produtos.Add(new Produto(){
+    Nome = "Desktop",
+    Preco = 3500,
+    Quantidade = 150
+});
+produtos.Add(new Produto(){
+    Nome = "Monitor",
+    Preco = 1200,
+    Quantidade = 15
+});
+produtos.Add(new Produto(){
+    Nome = "Caixa de Som",
+    Preco = 650,
+    Quantidade = 70
+});
+
 // EndPoints - Funcionalidades
-// Configurar a URL e o método/verbo
-app.MapGet("/", () => "Hello World em C#!");
+// Request - Configurar a URL e o método/verbo HTTP
+// Response - Retornar os dados (json/xml) e o status
+app.MapGet("/", () => "API de Produtos");
 
-app.MapGet("/segundafuncionalidade", () => "Segunda funcionalidade da API");
+// GET: /produto/listar
+app.MapGet("/produto/listar", () => {
+    return Results.Ok(produtos);
+});
 
-app.MapGet("/retornarendereco", () => 
-{
-    dynamic endereco = new {
-        rua = "Parigot de Souza",
-        numero = 5300,
-        cep = "81290-350"
-    };
-    return endereco;
+// POST: /produto/cadastrar
+app.MapPost("/produto/cadastrar/{nome}",
+(string nome) => {
+
+    // Criar o objeto e preencher
+    Produto produto = new Produto();
+    produto.Nome = nome;
+    // Adicionando dentro da lista
+    produtos.Add(produto);
+    return Results.Ok(produtos);
+
 });
 
 // Criar uma funcionalidade para receber informações
@@ -27,4 +60,26 @@ app.MapGet("/retornarendereco", () =>
 // - receber informações pelo corpo da requisição
 // - Guardar as informações em uma lista
 
+//             Métodos HTTP
+// Create   ->    Post
+// Retrieve ->    Get
+// Update   ->    Put / Patch
+// Delete   ->    Delete 
+
 app.Run();
+
+// C# - Utilização dos gets e sets
+// Produto produto = new Produto(){
+//     Nome = "",
+//     Preco = 5,
+//     Quantidade = 0
+// };
+
+// Produto produto = new Produto(); awo :D eow
+// produto.Preco = 5;
+// Console.WriteLine("Preço: " + produto.Preco);
+
+// JAVA - Utilização dos gets e sets
+// Produto produto = new Produto();
+// produto.setPreco(5);
+// Console.WriteLine("Preço: " + produto.getPreco());
