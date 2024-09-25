@@ -20,9 +20,13 @@ List<Produto> produtos =
 // Response - Retornar os dados (json/xml) e o código de status HTTP
 app.MapGet("/", () => "API de Produtos");
 
-// GET: /produto/listar
-app.MapGet("/produto/listar", () => {
-    return Results.Ok(produtos);
+//GET: /api/produto/listar
+app.MapGet("/api/produto/listar", () =>
+{
+    if (produtos.Count > 0) {
+        return Results.Ok(produtos);
+    }
+    return Results.NotFound();
 });
 
 //GET: /api/produto/buscar/{id}
@@ -75,6 +79,8 @@ app.Run();
 // - Rest Client - Extensão do VS Code
 // - Postman
 // - Insomnia
+
+// Para instalar a os pacotes é necessario ir para o diretório do PROJETO, não da SOLUÇÃO
 
 // Criar uma funcionalidade para receber informações
 // - Receber informações pela URL da requisição

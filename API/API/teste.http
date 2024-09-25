@@ -2,13 +2,13 @@
 GET  http://localhost:5014
 
 ### Listar produtos
-GET  http://localhost:5014/produto/listar
+GET  http://localhost:5014/api/produto/listar
 
 ### Buscar produto
-GET http://localhost:5014/produto/buscar/mouse
+GET http://localhost:5014/api/produto/buscar/mouse
 
 ### Cadastrar produto
-POST  http://localhost:5014/produto/cadastrar/
+POST  http://localhost:5014/api/produto/cadastrar/
 Content-Type: application/json
 
 {
