@@ -17,4 +17,15 @@ Content-Type: application/json
     "quantidade" : 156
 }
 
+### Deletar produto
+DELETE http://localhost:5014/api/produto/deletar/ad99da4b-7f96-48d3-ba7d-68b89bebab5c
 
+### Alterar produto
+PUT http://localhost:5014/api/produto/alterar/86b8fd0f-99c7-4c35-8111-8754a9244ef2
+Content-Type: application/json
+
+{
+    "nome" : "Água",
+    "preco" : 4.5,
+    "quantidade" : 153
+}
