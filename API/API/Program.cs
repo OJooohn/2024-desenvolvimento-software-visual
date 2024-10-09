@@ -5,6 +5,7 @@ using API.Models;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<AppDataContext>();
 var app = builder.Build();
 
 List<Produto> produtos =
@@ -21,18 +22,29 @@ List<Produto> produtos =
 app.MapGet("/", () => "API de Produtos");
 
 //GET: /api/produto/listar
-app.MapGet("/api/produto/listar", () =>
+app.MapGet("/api/produto/listar", ([FromServices] AppDataContext ctx) =>
 {
-    if (produtos.Count > 0) {
-        return Results.Ok(produtos);
+    // ctx.Produtos.Count()
+    if (ctx.Produtos.Any()) {
+        return Results.Ok(ctx.Produtos.ToList());
     }
     return Results.NotFound();
 });
 
 //GET: /api/produto/buscar/{id}
-app.MapGet("/api/produto/buscar/{id}", ([FromRoute] string id) =>
+app.MapGet("/api/produto/buscar/{id}", ([FromRoute] string id, [FromServices] AppDataContext ctx) =>
 {
-    Produto? produto = produtos.Find(x => x.Id == id);
+    // Expressão lambda em C# =>
+
+    // Buscar produto por outra propriedade, retornando um objeto
+    // Produto? produto = ctx.Produtos.FirstOrDefault(x => x.Nome == "Variável com o nome do produto");
+
+    // Buscar produtos por certa propriedade, retornando uma lista
+    // List<Produto> lista = ctx.Produtos.Where(x => x.Quantidade > 10).ToList();
+
+    // Padrao de busca, primary key, retorna um objeto
+    Produto? produto = ctx.Produtos.Find(id);
+
     if (produto == null) {
         return Results.NotFound();
     }
@@ -40,33 +52,48 @@ app.MapGet("/api/produto/buscar/{id}", ([FromRoute] string id) =>
 });
 
 //POST: /api/produto/cadastrar/param_nome
-app.MapPost("/api/produto/cadastrar", ([FromBody] Produto produto) =>
+app.MapPost("/api/produto/cadastrar", ([FromBody] Produto produto, [FromServices] AppDataContext ctx) =>
 {
     produtos.Add(produto);
+    // banco -> tabela -> operacao
+
+    ctx.Produtos.Add(produto);
+    ctx.SaveChangesAsync();
+
     return Results.Created("", produto);
 });
 
 //DELETE: /api/produto/deletar/{id}
-app.MapDelete("/api/produto/deletar/{id}", ([FromRoute] string id) =>
+app.MapDelete("/api/produto/deletar/{id}", ([FromRoute] string id, [FromServices] AppDataContext ctx) =>
 {
-    Produto? produto = produtos.Find(x => x.Id == id);
+    Produto? produto = ctx.Produtos.Find(id);
     if (produto == null) {
         return Results.NotFound();
     }
-    produtos.Remove(produto);
+
+    ctx.Produtos.Remove(produto);
+    ctx.SaveChangesAsync();
+
     return Results.Ok(produto);
 });
 
 //PUT: /api/produto/alterar/{id}
-app.MapPut("/api/produto/alterar/{id}", ([FromRoute] string id, [FromBody] Produto produtoAlterado) =>
+app.MapPut("/api/produto/alterar/{id}", ([FromRoute] string id, [FromBody] Produto produtoAlterado, [FromServices] AppDataContext ctx) =>
 {
-    Produto? produto = produtos.Find(x => x.Id == id);
+    Produto? produto = ctx.Produtos.Find(id);
+
     if (produto == null) {
         return Results.NotFound();
     }
+
     produto.Nome = produtoAlterado.Nome;
     produto.Quantidade = produtoAlterado.Quantidade;
     produto.Preco = produtoAlterado.Preco;
+    produto.Descricao = produtoAlterado.Descricao;
+
+    ctx.Produtos.Update(produto);
+    ctx.SaveChangesAsync();
+
     return Results.Ok(produto);
 });
 

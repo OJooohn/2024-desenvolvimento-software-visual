@@ -17,6 +17,23 @@ namespace API.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
 
+            modelBuilder.Entity("API.Models.Categoria", b =>
+                {
+                    b.Property<int>("CategoriaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CriadoEm")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoriaId");
+
+                    b.ToTable("Categorias");
+                });
+
             modelBuilder.Entity("API.Models.Produto", b =>
                 {
                     b.Property<string>("Id")

@@ -7,6 +7,7 @@ namespace API.Models;
 public class AppDataContext : DbContext {
     // Informar quais as classes serão tabelas no bando de dados
     public DbSet<Produto> Produtos { get; set; }
+    public DbSet<Categoria> Categorias { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
         optionsBuilder.UseSqlite("Data Source=Ecommerce.db");

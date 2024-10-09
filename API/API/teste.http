@@ -5,7 +5,7 @@ GET  http://localhost:5014
 GET  http://localhost:5014/api/produto/listar
 
 ### Buscar produto
-GET http://localhost:5014/api/produto/buscar/mouse
+GET http://localhost:5014/api/produto/buscar/bd65aeb9-afd1-4a8a-9731-ec1ac3a35497
 
 ### Cadastrar produto
 POST  http://localhost:5014/api/produto/cadastrar/
@@ -14,18 +14,20 @@ Content-Type: application/json
 {
     "nome" : "Bolacha",
     "preco" : 4.5,
-    "quantidade" : 156
+    "quantidade" : 156,
+    "descricao" : "Bolacha recheada"
 }
 
 ### Deletar produto
-DELETE http://localhost:5014/api/produto/deletar/ad99da4b-7f96-48d3-ba7d-68b89bebab5c
+DELETE http://localhost:5014/api/produto/deletar/a1866ef1-884c-4556-a4c3-a445898222fe
 
 ### Alterar produto
-PUT http://localhost:5014/api/produto/alterar/86b8fd0f-99c7-4c35-8111-8754a9244ef2
+PUT http://localhost:5014/api/produto/alterar/a02fd5bb-79e1-4906-9189-311aefc3c5e1
 Content-Type: application/json
 
 {
     "nome" : "Água",
-    "preco" : 4.5,
-    "quantidade" : 153
+    "preco" : 6,
+    "quantidade" : 155,
+    "descricao" : "Água mineral"
 }
