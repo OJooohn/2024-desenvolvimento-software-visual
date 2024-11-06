@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { Cep } from "../interfaces/Cep";
+import { Cep } from "../../models/Cep";
 
 function ConsultarCep() {
 
+    // Variáveis, constantes e estados
     const [cep, setCep] = useState<Cep>();
     const [cepDigitado, setCepDigitado] = useState("");
     
@@ -18,18 +19,18 @@ function ConsultarCep() {
         // console.log("O componente abriu!")
 
         // Irá fazer uma requisição
-        fetch("http://localhost:5014/api/produto/listar")
-            .then(resposta => {
-                if (!resposta.ok) 
-                    throw new Error('Erro na requisição: ' + resposta.statusText);
-                return resposta.json();
-            })
-            .then(produtos => {
-                console.log(produtos);
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-            });
+        // fetch("http://localhost:5014/api/produto/listar")
+        //     .then(resposta => {
+        //         if (!resposta.ok) 
+        //             throw new Error('Erro na requisição: ' + resposta.statusText);
+        //         return resposta.json();
+        //     })
+        //     .then(produtos => {
+        //         console.log(produtos);
+        //     })
+        //     .catch(error => {
+        //         console.error('Erro:', error);
+        //     });
     });
 
     function digitar(e : any){
@@ -38,6 +39,29 @@ function ConsultarCep() {
     }
 
     function sairCaixaTexto(e : any){
+    //     fetch("https://viacep.com.br/ws/" + cepDigitado + "/json/")
+    //         .then(resposta => {
+    //             if (!resposta.ok) 
+    //                 throw new Error('Erro na requisição: ' + resposta.statusText);
+                
+    //             // console.log(resposta)
+    //             return resposta.json();
+    //         })
+    //         .then(cep => {
+    //             // console.log(cep);
+
+    //             setBairro(cep.bairro);
+    //             setEstado(cep.estado);
+    //             setLogradouro(cep.logradouro);
+
+    //             setCep(cep);
+    //         })
+    //         .catch(error => {
+    //             console.error('Erro:', error);
+    //         });
+    }
+
+    function clicar(e : any){
         fetch("https://viacep.com.br/ws/" + cepDigitado + "/json/")
             .then(resposta => {
                 if (!resposta.ok) 
@@ -64,7 +88,14 @@ function ConsultarCep() {
         <div>
             <h1>Consultar CEP</h1>
 
-        <input type="text" placeholder="Digite o CEP" onChange={digitar} onBlur={sairCaixaTexto}/>
+            <input 
+            type="text" 
+            placeholder="Digite o CEP"
+            onChange={digitar}
+            onBlur={sairCaixaTexto}/>
+
+            <button onClick={clicar}>Consultar</button>
+        
 
             {/* <p>{bairro}</p>
             <p>{estado}</p>

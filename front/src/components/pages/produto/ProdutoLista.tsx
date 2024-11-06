@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Produto } from "../interfaces/Produto";
+import { Produto } from "../../../models/Produto";
 
-function ProdutoListar() {
+function ProdutoLista() {
+    
     const [produtos, setProdutos] = useState<Produto[]>([]);
 
     useEffect(() => {
@@ -15,15 +16,16 @@ function ProdutoListar() {
             })
             .then(produtos => {
                 setProdutos(produtos);
+                // console.table(produtos);
             })
             .catch(error => {
                 console.error('Erro:', error);
             });
     });
 
-    return (
+    return(
         <div>
-            <h1>Listar Produtos</h1>
+            <h1>Lista de Produtos!</h1>
             <table>
                 <thead>
                     <tr>
@@ -43,13 +45,13 @@ function ProdutoListar() {
                             <td>{produto.descricao}</td>
                             <td>{produto.preco}</td>
                             <td>{produto.quantidade}</td>
-                            <td>{new Date(produto.criadoEm).toLocaleDateString()}</td>
+                            <td>{produto.criadoEm}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
         </div>
-    );      
+    );
 }
 
-export default ProdutoListar;
+export default ProdutoLista;
