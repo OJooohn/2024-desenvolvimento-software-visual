@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Cep } from "../../models/Cep";
+import { Cep } from "../../../models/Cep";
 
 function ConsultarCep() {
 
@@ -10,6 +10,8 @@ function ConsultarCep() {
     const [bairro, setBairro] = useState("");
     const [estado, setEstado] = useState("");
     const [logradouro, setLogradouro] = useState("");
+    const [localidade, setLocalidade] = useState("");
+    const [uf, setUF] = useState("");
 
     useEffect(() => {
         // Função utilizada para executar algum código
@@ -39,26 +41,26 @@ function ConsultarCep() {
     }
 
     function sairCaixaTexto(e : any){
-    //     fetch("https://viacep.com.br/ws/" + cepDigitado + "/json/")
-    //         .then(resposta => {
-    //             if (!resposta.ok) 
-    //                 throw new Error('Erro na requisição: ' + resposta.statusText);
+        // fetch("https://viacep.com.br/ws/" + cepDigitado + "/json/")
+        //     .then(resposta => {
+        //         if (!resposta.ok) 
+        //             throw new Error('Erro na requisição: ' + resposta.statusText);
                 
-    //             // console.log(resposta)
-    //             return resposta.json();
-    //         })
-    //         .then(cep => {
-    //             // console.log(cep);
+        //         // console.log(resposta)
+        //         return resposta.json();
+        //     })
+        //     .then(cep => {
+        //         // console.log(cep);
 
-    //             setBairro(cep.bairro);
-    //             setEstado(cep.estado);
-    //             setLogradouro(cep.logradouro);
+        //         setBairro(cep.bairro);
+        //         setEstado(cep.estado);
+        //         setLogradouro(cep.logradouro);
 
-    //             setCep(cep);
-    //         })
-    //         .catch(error => {
-    //             console.error('Erro:', error);
-    //         });
+        //         setCep(cep);
+        //     })
+        //     .catch(error => {
+        //         console.error('Erro:', error);
+        //     });
     }
 
     function clicar(e : any){
@@ -76,6 +78,8 @@ function ConsultarCep() {
                 setBairro(cep.bairro);
                 setEstado(cep.estado);
                 setLogradouro(cep.logradouro);
+                setLocalidade(cep.localidade);
+                setUF(cep.uf);
 
                 setCep(cep);
             })
@@ -96,14 +100,14 @@ function ConsultarCep() {
 
             <button onClick={clicar}>Consultar</button>
         
-
-            {/* <p>{bairro}</p>
+            <h2>Informações do CEP</h2>
+            <p>{bairro}</p>
             <p>{estado}</p>
-            <p>{logradouro}</p> */}
+            <p>{logradouro}</p>
+            <p>{localidade}</p>
+            <p>{uf}</p>
 
-            {/* <p>{cepDigitado}</p> */}
-
-            {cep && (
+            {/* {cep && (
                     <div>
                         <p>CEP: {cep.cep} </p>
                         <p>Logradouro: {cep.logradouro} </p>
@@ -111,7 +115,7 @@ function ConsultarCep() {
                         <p>Localidade: {cep.localidade} </p>
                         <p>UF: {cep.uf} </p>
                     </div>
-                )}
+                )} */}
         </div>
     );
 }

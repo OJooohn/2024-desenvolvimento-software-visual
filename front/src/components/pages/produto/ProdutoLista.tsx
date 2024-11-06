@@ -45,7 +45,7 @@ function ProdutoLista() {
                             <td>{produto.descricao}</td>
                             <td>{produto.preco}</td>
                             <td>{produto.quantidade}</td>
-                            <td>{produto.criadoEm}</td>
+                            <td>{produto.criadoEm ? new Date(produto.criadoEm).toLocaleDateString() : 'N/A'}</td>
                         </tr>
                     ))}
                 </tbody>

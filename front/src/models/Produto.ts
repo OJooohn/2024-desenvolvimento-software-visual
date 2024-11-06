@@ -4,5 +4,5 @@ export interface Produto {
     descricao: string;
     preco: number;
     quantidade: number;
-    criadoEm?: string;
+    criadoEm?: Date;
 }

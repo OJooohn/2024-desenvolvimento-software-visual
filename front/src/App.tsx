@@ -1,9 +1,8 @@
 import React from 'react';
-import ProdutoListar from './components/samples/ProdutoListarTeste';
 import ComponenteExemplo from './components/samples/ComponenteExemplo';
-import ConsultarCep from './components/samples/ConsultarCep';
 import ProdutoLista from './components/pages/produto/ProdutoLista';
 import ProdutoCadastro from './components/pages/produto/ProdutoCadastro';
+import ConsultarCep from './components/pages/cep/ConsultarCep';
 
 function App() {
   return (

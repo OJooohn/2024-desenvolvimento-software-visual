@@ -8,6 +8,7 @@ function ProdutoCadastro() {
     const [preco, setPreco] = useState("");
 
     function enviarProduto(e : any){
+        
         e.preventDefault();
 
         const produto : Produto =  {
