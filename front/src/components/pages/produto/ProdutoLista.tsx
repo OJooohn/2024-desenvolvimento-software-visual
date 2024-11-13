@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Produto } from "../../../models/Produto";
+import './ProdutoLista.css';
 
 function ProdutoLista() {
     

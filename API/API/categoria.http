@@ -1,0 +1,13 @@
+### Testar a raiz da aplicação
+GET  http://localhost:5014
+
+### Listar categorias
+GET  http://localhost:5014/api/categoria/listar
+
+### Cadastrar categoria
+POST  http://localhost:5014/api/categoria/cadastrar/
+Content-Type: application/json
+
+{
+    "nome" : "Alimento"
+}

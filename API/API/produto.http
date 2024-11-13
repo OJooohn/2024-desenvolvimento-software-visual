@@ -15,7 +15,8 @@ Content-Type: application/json
     "nome" : "Bolacha",
     "preco" : 4.5,
     "quantidade" : 156,
-    "descricao" : "Bolacha recheada"
+    "descricao" : "Bolacha recheada",
+    "categoriaId" : 1
 }
 
 ### Deletar produto
