@@ -4,12 +4,13 @@ import ProdutoLista from './components/pages/produto/ProdutoLista';
 import ProdutoCadastro from './components/pages/produto/ProdutoCadastro';
 import ConsultarCep from './components/pages/cep/ConsultarCep';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import './Navbar.css';
 
 function App() {
   return (
     <div id="app">
       <BrowserRouter>
-        <nav>
+        <nav id="navBar">
           <ul>
             <li>
               <Link to="/">Home</Link>

@@ -1,53 +1,83 @@
-/* Estilo do contêiner principal */
-div {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
+/* Título */
+#listarProdutos {
+    align-items: center;
+    width: 50%;
 }
 
-/* Título */
-h1 {
+#listarProdutos h1 {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
 }
 
 /* Tabela */
-table {
+#listarProdutos table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    border-collapse: separate; /* Permite controlar o espaçamento entre as bordas */
+    border-radius: 8px;
+    overflow: hidden; /* Garante que o arredondamento funcione */
+    border-spacing: 0;
+    box-shadow: 2px 2px 20px 1px rgba(0, 0, 0, 0.719); /* Sombra opcional */
+    border-radius: 20px;
 }
 
 /* Cabeçalho da Tabela */
-thead th {
+#listarProdutos th {
     background-color: #c2c2c2;
     color: black;
     padding: 10px;
-    text-align: left;
+    text-align: center;
     font-weight: bold;
-    border-bottom: 2px solid #ddd;
+    border-right: 1px solid #ddd;
 }
 
-/* Linhas da tabela */
-tbody tr:nth-child(even) {
+#listarProdutos th:last-child {
+    border-right: none;
+}
+
+/* Células da tabela */
+#listarProdutos td {
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid #ddd; /* Borda superior para as linhas */
+    border-right: 1px solid #ddd;
+}
+
+/* Remove a borda direita da última célula em cada linha */
+#listarProdutos td:last-child {
+    border-right: none;
+}
+
+/* Linhas alternadas para facilitar a leitura */
+#listarProdutos tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-tbody tr:hover {
+/* Efeito de hover nas linhas */
+#listarProdutos tbody tr:hover {
     background-color: #f1f1f1;
 }
 
-/* Células da Tabela */
-td, th {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+/* Bordas arredondadas para a tabela */
+#listarProdutos table thead tr th:first-child {
+    border-top-left-radius: 20px;
 }
 
-/* Estilo de preços */
-td:nth-child(4) {
-    color: #d9534f; /* Cor destacada para preços */
-    font-weight: bold;
+#listarProdutos table thead tr th:last-child {
+    border-top-right-radius: 20px;
+}
+
+#listarProdutos table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 20px;
+}
+
+#listarProdutos table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 20px;
+}
+
+#divTable {
+    background-color: #e4e4e4;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
 }

@@ -1,0 +1,43 @@
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#navBar {
+    width: 100%;
+    background-color: #4CAF50;
+    padding: 10px;
+}
+
+/* Estilo para a lista de navegação */
+#navBar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Estilo para os itens de navegação */
+#navBar ul li {
+    margin: 0 15px;
+}
+
+/* Estilo para os links de navegação */
+#navBar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Efeito ao passar o mouse sobre os links */
+#navBar ul li a:hover {
+    color: #ddd;
+}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Produto } from "../../../models/Produto";
+import './ProdutoCadastro.css';
 
 function ProdutoCadastro() {
     const [nome, setNome] = useState("");
@@ -39,48 +40,50 @@ function ProdutoCadastro() {
 
     return(
         <div id="cadastrar_produto">
-            <h1>Cadastro de Produto</h1>
+            <div id="cadastroBox">
+                <h1>Cadastro de Produto</h1>
 
-            <form onSubmit={enviarProduto}>
-                <div>
-                    <label htmlFor="nome">Nome</label>
-                    <textarea id="nome" name="nome" 
-                    required
-                    onChange={(e : any) => setNome(e.target.value)}></textarea>
-                </div>
+                <form onSubmit={enviarProduto}>
+                    <div>
+                        <label htmlFor="nome">Nome</label>
+                        <textarea id="nome" name="nome" 
+                        required
+                        onChange={(e : any) => setNome(e.target.value)}></textarea>
+                    </div>
 
-                <div>
-                    <label htmlFor="descricao">Descrição</label>
-                    <input id="descricao" name="descricao" 
-                    required
-                    onChange={(e : any) => setDescricao(e.target.value)}></input>
-                </div>
+                    <div>
+                        <label htmlFor="descricao">Descrição</label>
+                        <textarea id="descricao" name="descricao"
+                        required
+                        onChange={(e : any) => setDescricao(e.target.value)}></textarea>
+                    </div>
 
-                <div>
-                    <label htmlFor="preco">Preço</label>
-                    <input type="number" id="preco" name="preco" 
-                    required
-                    onChange={(e : any) => setPreco(e.target.value)}></input>
-                </div>
+                    <div>
+                        <label htmlFor="preco">Preço</label>
+                        <input type="number" id="preco" name="preco" 
+                        required
+                        onChange={(e : any) => setPreco(e.target.value)}></input>
+                    </div>
 
-                <div>
-                    <label htmlFor="quantidade">Quantidade em Estoque</label>
-                    <input type="number" id="quantidade" name="quantidade" 
-                    required
-                    onChange={(e : any) => setQuantidade(e.target.value)}></input>
-                </div>
-                
-                <div>
-                    <label htmlFor="quantidade">Categorias</label>
-                    <select onChange={(e : any) => setCategoriaId(e.target.value)}>
-                        <option value="1">Bebidas</option>
-                        <option value="2">Comidas</option>
-                        <option value="3">Roupas</option>
-                    </select>
-                </div>
+                    <div>
+                        <label htmlFor="quantidade">Quantidade em Estoque</label>
+                        <input type="number" id="quantidade" name="quantidade" 
+                        required
+                        onChange={(e : any) => setQuantidade(e.target.value)}></input>
+                    </div>
+                    
+                    <div>
+                        <label htmlFor="quantidade">Categorias</label>
+                        <select onChange={(e : any) => setCategoriaId(e.target.value)}>
+                            <option value="1">Bebidas</option>
+                            <option value="2">Comidas</option>
+                            <option value="3">Roupas</option>
+                        </select>
+                    </div>
 
-                <button type="submit">Cadastrar Produto</button>
-            </form>
+                    <button type="submit">Cadastrar Produto</button>
+                </form>
+            </div>
         </div>
     );
 }

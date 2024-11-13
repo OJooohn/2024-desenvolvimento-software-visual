@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Cep } from "../../../models/Cep";
+import './ConsultarCep.css';
 
 function ConsultarCep() {
 
@@ -12,6 +13,8 @@ function ConsultarCep() {
     const [logradouro, setLogradouro] = useState("");
     const [localidade, setLocalidade] = useState("");
     const [uf, setUF] = useState("");
+
+    const [mostrarInfoCEP, setMostrarInfoCEP] = useState(false);
 
     useEffect(() => {
         // Função utilizada para executar algum código
@@ -82,6 +85,7 @@ function ConsultarCep() {
                 setUF(cep.uf);
 
                 setCep(cep);
+                setMostrarInfoCEP(true);
             })
             .catch(error => {
                 console.error('Erro:', error);
@@ -89,33 +93,39 @@ function ConsultarCep() {
     }
 
     return (
-        <div>
-            <h1>Consultar CEP</h1>
+        <div id="consultarCEP">
+            <div id="consultarBox">
+                <h1>Consultar CEP</h1>
 
-            <input 
-            type="text" 
-            placeholder="Digite o CEP"
-            onChange={digitar}
-            onBlur={sairCaixaTexto}/>
+                <input 
+                type="text" 
+                placeholder="Digite o CEP"
+                onChange={digitar}
+                onBlur={sairCaixaTexto}/>
 
-            <button onClick={clicar}>Consultar</button>
-        
-            <h2>Informações do CEP</h2>
-            <p>{bairro}</p>
-            <p>{estado}</p>
-            <p>{logradouro}</p>
-            <p>{localidade}</p>
-            <p>{uf}</p>
+                <button onClick={clicar}>Consultar</button>
 
-            {/* {cep && (
-                    <div>
-                        <p>CEP: {cep.cep} </p>
-                        <p>Logradouro: {cep.logradouro} </p>
-                        <p>Bairro: {cep.bairro} </p>
-                        <p>Localidade: {cep.localidade} </p>
-                        <p>UF: {cep.uf} </p>
-                    </div>
-                )} */}
+                {mostrarInfoCEP && (
+                    <>
+                        <h2>Informações do CEP</h2>
+                        <p>Bairro: {bairro}</p>
+                        <p>Estado: {estado}</p>
+                        <p>Logradouro: {logradouro}</p>
+                        <p>Localidade: {localidade}</p>
+                        <p>UF: {uf}</p>
+                    </>
+                )}
+
+                {/* {cep && (
+                        <div>
+                            <p>CEP: {cep.cep} </p>
+                            <p>Logradouro: {cep.logradouro} </p>
+                            <p>Bairro: {cep.bairro} </p>
+                            <p>Localidade: {cep.localidade} </p>
+                            <p>UF: {cep.uf} </p>
+                        </div>
+                    )} */}
+            </div>
         </div>
     );
 }
