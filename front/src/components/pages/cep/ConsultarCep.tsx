@@ -7,7 +7,7 @@ function ConsultarCep() {
     // Variáveis, constantes e estados
     const [cep, setCep] = useState<Cep>();
     const [cepDigitado, setCepDigitado] = useState("");
-    
+
     const [bairro, setBairro] = useState("");
     const [estado, setEstado] = useState("");
     const [logradouro, setLogradouro] = useState("");
@@ -38,17 +38,17 @@ function ConsultarCep() {
         //     });
     });
 
-    function digitar(e : any){
+    function digitar(e: any) {
         console.log(e.target.value);
         setCepDigitado(e.target.value);
     }
 
-    function sairCaixaTexto(e : any){
+    function sairCaixaTexto(e: any) {
         // fetch("https://viacep.com.br/ws/" + cepDigitado + "/json/")
         //     .then(resposta => {
         //         if (!resposta.ok) 
         //             throw new Error('Erro na requisição: ' + resposta.statusText);
-                
+
         //         // console.log(resposta)
         //         return resposta.json();
         //     })
@@ -66,12 +66,12 @@ function ConsultarCep() {
         //     });
     }
 
-    function clicar(e : any){
+    function clicar(e: any) {
         fetch("https://viacep.com.br/ws/" + cepDigitado + "/json/")
             .then(resposta => {
-                if (!resposta.ok) 
+                if (!resposta.ok)
                     throw new Error('Erro na requisição: ' + resposta.statusText);
-                
+
                 // console.log(resposta)
                 return resposta.json();
             })
@@ -97,11 +97,11 @@ function ConsultarCep() {
             <div id="consultarBox">
                 <h1>Consultar CEP</h1>
 
-                <input 
-                type="text" 
-                placeholder="Digite o CEP"
-                onChange={digitar}
-                onBlur={sairCaixaTexto}/>
+                <input
+                    type="text"
+                    placeholder="Digite o CEP"
+                    onChange={digitar}
+                    onBlur={sairCaixaTexto} />
 
                 <button onClick={clicar}>Consultar</button>
 
